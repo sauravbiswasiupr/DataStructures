@@ -1,0 +1,18 @@
+Some notes for my c++ references:
+*********************************
+
+1. -I option to g++ indicated where to search for the "declarations" of certain symbols (API methods/functions). Typically /usr/local/include is where the .h files are included. You could mention a standard directory of your choice where you store your .h files
+
+2. Any declaration that you might have done for your API methods need to be defined somewhere and found by the linker at the compilation step. This option is provided by the -L flag which indicates a path to search (directory) where possibly the library (function definitions might exist). You also mention the library name to link with using the -l option preceding the library name
+
+Example:
+/testdir/src/main.cpp
+/testdir/include/Trie.h
+/testdir/lib/libTrie.a ( created from a file say Trie.cpp )
+
+g++ -o Trie -I /testdir/include -L /testdir/lib  /testdir/src/main.cpp -lTrie
+
+Points to ponder
+****************
+How are .a files created ?
+What is the proper directory structure for such static library files ?
